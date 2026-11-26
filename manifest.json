@@ -1,0 +1,21 @@
+{
+  "id": "screenshot",
+  "name": "截图",
+  "name_en": "Screenshot",
+  "version": "0.1.0",
+  "description": "抓一张全屏截图存成 PNG，返回路径和分辨率（配合识图插件可以看图）。",
+  "description_en": "Capture a full-screen PNG and return its path and resolution (works with the vision plugin to read it).",
+  "author": "yushuchun177",
+  "homepage": "https://github.com/yushuchun177/localharness-plugin-screenshot",
+  "min_app": "0.1.0",
+  "tools": [
+    {
+      "name": "screenshot_capture",
+      "description": "截取当前整个桌面，保存为 PNG，返回文件路径。",
+      "params": {
+        "name": "string，可选，文件名前缀，默认 shot"
+      },
+      "dangerous": true
+    }
+  ]
+}
