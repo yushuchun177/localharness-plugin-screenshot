@@ -46,7 +46,8 @@
       "level": "act",
       "needs": [
         "屏幕内容"
-      ]
+      ],
+      "async": true
     }
   ]
 }
