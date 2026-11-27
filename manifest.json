@@ -3,6 +3,7 @@
   "name": "截图",
   "name_en": "Screenshot",
   "version": "0.1.0",
+  "license": "GPL-3.0",
   "description": "抓一张全屏截图存成 PNG，返回路径和分辨率（配合识图插件可以看图）。",
   "description_en": "Capture a full-screen PNG and return its path and resolution (works with the vision plugin to read it).",
   "author": "yushuchun177",
