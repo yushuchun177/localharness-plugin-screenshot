@@ -8,6 +8,26 @@
   "author": "yushuchun177",
   "homepage": "https://github.com/yushuchun177/localharness-plugin-screenshot",
   "min_app": "0.1.0",
+  "requires": {
+    "os": "Windows 10+",
+    "deps": [
+      "PowerShell",
+      ".NET"
+    ],
+    "disk": "每张约 1–3 MB",
+    "memory": "约 20 MB",
+    "network": false
+  },
+  "settings": [
+    {
+      "key": "dir",
+      "label": "保存目录",
+      "type": "string",
+      "default": "",
+      "help": "留空保存到 user://shots",
+      "placeholder": "D:/shots（留空用默认）"
+    }
+  ],
   "tools": [
     {
       "name": "screenshot_capture",
@@ -15,16 +35,11 @@
       "params": {
         "name": "string，可选，文件名前缀，默认 shot"
       },
-      "dangerous": true
-    }
-  ],
-  "settings": [
-    {
-      "key": "dir",
-      "label": "保存目录",
-      "type": "string",
-      "default": "",
-      "help": "留空保存到 user://shots"
+      "dangerous": true,
+      "level": "act",
+      "needs": [
+        "屏幕内容"
+      ]
     }
   ]
 }
