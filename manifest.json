@@ -28,6 +28,13 @@
       "placeholder": "D:/shots（留空用默认）"
     }
   ],
+  "commands": [
+    {
+      "name": "shot",
+      "description": "截一张全屏图",
+      "usage": "/shot [文件名]"
+    }
+  ],
   "tools": [
     {
       "name": "screenshot_capture",
