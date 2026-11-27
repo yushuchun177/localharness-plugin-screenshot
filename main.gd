@@ -72,3 +72,8 @@ func _ps_script(path: String) -> String:
 		"Write-Output 'ok'"
 	)
 
+func on_command(cmd: String, args: String) -> Dictionary:
+	if cmd != "shot":
+		return {"ok": false, "output": "未知命令"}
+	var prefix := args.strip_edges() if args.strip_edges() != "" else "cmd"
+	return run("screenshot_capture", {"name": prefix})
