@@ -1,4 +1,4 @@
-extends Node
+﻿extends Node
 ## 截图插件 · local-harness
 ## 工具：screenshot_capture(name?)
 ##
@@ -8,6 +8,14 @@ extends Node
 
 const SHOT_DIR := "user://shots"
 
+
+
+func _pref(key: String, def_value):
+	var ml := Engine.get_main_loop()
+	var prefs = ml.root.get_node_or_null("/root/PluginPrefs") if ml != null else null
+	if prefs == null:
+		return def_value
+	return prefs.get_value("screenshot", key, def_value)
 
 func run(tool: String, args: Dictionary) -> Dictionary:
 	if tool != "screenshot_capture":
@@ -19,9 +27,12 @@ func run(tool: String, args: Dictionary) -> Dictionary:
 	if prefix.length() > 40:
 		prefix = prefix.substr(0, 40)
 
-	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(SHOT_DIR))
+	var base_dir := str(_pref("dir", "")).strip_edges()
+	if base_dir == "":
+		base_dir = SHOT_DIR
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(base_dir))
 	var stamp := Time.get_datetime_string_from_system().replace(":", "-").replace(" ", "_")
-	var rel := SHOT_DIR.path_join("%s_%s.png" % [prefix, stamp])
+	var rel := base_dir.path_join("%s_%s.png" % [prefix, stamp])
 	var abs_path := ProjectSettings.globalize_path(rel)
 	if FileAccess.file_exists(rel):
 		DirAccess.remove_absolute(abs_path)
@@ -60,3 +71,4 @@ func _ps_script(path: String) -> String:
 		"$g.Dispose();$b.Dispose();" +
 		"Write-Output 'ok'"
 	)
+
