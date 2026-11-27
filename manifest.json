@@ -17,5 +17,14 @@
       },
       "dangerous": true
     }
+  ],
+  "settings": [
+    {
+      "key": "dir",
+      "label": "保存目录",
+      "type": "string",
+      "default": "",
+      "help": "留空保存到 user://shots"
+    }
   ]
 }
